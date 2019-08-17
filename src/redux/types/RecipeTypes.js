@@ -1,0 +1,3 @@
+export const LOAD = "LOAD_RECIPE_PAGE";
+export const LOAD_SUCCESS = "LOAD_SUCCESS_RECIPE_PAGE";
+export const LOAD_ERROR = "LOAD_ERROR_RECIPE_PAGE";

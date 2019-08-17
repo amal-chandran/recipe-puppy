@@ -4,11 +4,14 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.3.2",
+    "query-string": "^6.8.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.0",
     "react-scripts": "3.1.1",
+    "react-select": "^3.0.4",
     "redux": "^4.0.4",
+    "redux-logger": "^3.0.6",
     "redux-saga": "^1.0.5"
   },
   "scripts": {
