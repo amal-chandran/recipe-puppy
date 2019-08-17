@@ -104,3 +104,8 @@ body {
   border: none;
   text-decoration: none;
 }
+
+.more-chips {
+  vertical-align: baseline;
+  color: #868686 !important;
+}

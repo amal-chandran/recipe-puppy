@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Select from "react-select/creatable";
 import { components } from "react-select";
 import RecipeCard from "./../components/RecipeCard";
+
 const options = [
   { value: "Onion", label: "Onion" },
   { value: "Garlic", label: "Garlic" },
@@ -84,18 +85,24 @@ export class HomePage extends Component {
           </div>
         </div>
         <div className="card-list container">
-          <RecipeCard
-            handleDelete={data => e => {
-              console.log(data);
-            }}
-            data={{
-              title: "Vegetable-Pasta Oven Omelet",
-              thumbnail: "http://img.recipepuppy.com/560556.jpg",
-              ingredients: "tomato, onions, red pepper, garlic, olive oil, zucchini, cream cheese, vermicelli, eggs, parmesan cheese, milk, italian seasoning, salt, black pepper".split(
-                ","
-              )
-            }}
-          />
+          <div className="row">
+            {new Array(1, 2, 3, 4).map(() => (
+              <div className="col">
+                <RecipeCard
+                  handleDelete={data => e => {
+                    console.log(data);
+                  }}
+                  data={{
+                    title: "Vegetable-Pasta Oven Omelet",
+                    thumbnail: "http://img.recipepuppy.com/560556.jpg",
+                    ingredients: "tomato, onions, red pepper, garlic, olive oil, zucchini, cream cheese, vermicelli, eggs, parmesan cheese, milk, italian seasoning, salt, black pepper".split(
+                      ","
+                    )
+                  }}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
