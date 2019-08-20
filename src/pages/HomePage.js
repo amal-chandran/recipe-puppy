@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Select from "react-select/creatable";
 import { components } from "react-select";
 import RecipeCard from "./../components/RecipeCard";
+import classnames from "classnames";
 
 const options = [
   { value: "Onion", label: "Onion" },
@@ -11,6 +12,21 @@ const options = [
 ];
 
 export class HomePage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      RecipeList: [],
+      loaded: false
+    };
+  }
+
+  handleSearch = () => {
+    this.setState({ loaded: true });
+    setTimeout(() => {
+      this.setState({ RecipeList: new Array(1, 2, 3, 4) });
+    }, 700);
+  };
+
   render() {
     return (
       <div>
@@ -21,7 +37,12 @@ export class HomePage extends Component {
               <div className="tag-line">
                 Search engine to find recipes by their ingredients
               </div>
-              <div className="search-box  d-flex ">
+              <div
+                onTransitionEnd={this.handleLoad}
+                className={classnames("search-box", "d-flex", {
+                  active: this.state.loaded
+                })}
+              >
                 <Select
                   className="w-100"
                   styles={{
@@ -73,11 +94,16 @@ export class HomePage extends Component {
                   formatCreateLabel={val => `Add Ingredient "${val}"`}
                   options={options}
                 />
-                <button className="btn search-button">Search</button>
+                <button
+                  onClick={this.handleSearch}
+                  className="btn search-button"
+                >
+                  Search
+                </button>
               </div>
             </div>
 
-            <div className="d-flex  showcase-images">
+            <div className="d-lg-flex d-none showcase-images">
               <img src="/assets/img-1.png" alt="Showcase" />
               <img src="/assets/img-2.png" alt="Showcase" />
               <img src="/assets/img-3.png" alt="Showcase" />
@@ -86,8 +112,8 @@ export class HomePage extends Component {
         </div>
         <div className="card-list container">
           <div className="row">
-            {new Array(1, 2, 3, 4).map(() => (
-              <div className="col">
+            {this.state.RecipeList.map(() => (
+              <div className="col-md-6 col-lg-3 mb-4">
                 <RecipeCard
                   handleDelete={data => e => {
                     console.log(data);
